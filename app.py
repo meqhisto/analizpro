@@ -1,19 +1,24 @@
-from flask import Flask
+from flask import Flask, render_template
+from flask_sqlalchemy import SQLAlchemy
+import config
+from views.admin import admin_bp
+from views.gayrimenkul import gayrimenkul_bp
+from models.models import db
 
-# Flask uygulamasını başlat
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = config.DATABASE_CONFIG['DATABASE_URL']
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# Uygulama için gizli anahtar (Secret Key) - Oturum yönetimi vb. için önemlidir.
-# Gerçek uygulamalarda bu değeri güvenli bir yerden (örneğin ortam değişkeni) alın.
-app.config['SECRET_KEY'] = 'cok-gizli-bir-anahtar-buraya-gelecek'
+db.init_app(app)
 
-# Örnek bir route (anasayfa)
-@app.route('/')
-def index():
-    return "Gayrimenkul Analiz Programına Hoş Geldiniz!"
+app.register_blueprint(admin_bp)
+app.register_blueprint(gayrimenkul_bp)
 
-# Uygulamanın doğrudan çalıştırılması durumunda development server'ı başlat
+@app.route("/")
+def anasayfa():
+    return render_template('anasayfa.html')
+
 if __name__ == '__main__':
-    # Debug modu geliştirme sırasında hataları görmek için kullanışlıdır.
-    # Üretim ortamında False olarak ayarlanmalıdır.
-    app.run(debug=True)
+    with app.app_context():
+        db.create_all()
+        app.run(debug=True)

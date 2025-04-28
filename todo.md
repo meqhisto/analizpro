@@ -1,11 +1,12 @@
 # Gayrimenkul Analiz Programı - Yapılacaklar Listesi
 
-- [ ] Proje iskeletini oluştur (Flask app, dizin yapısı).
-- [ ] Veritabanı modelini tasarla (Gayrimenkul, Kullanıcı, Rapor tabloları vb.).
-- [ ] MSSQL veritabanı bağlantısını yapılandır.
-- [ ] Temel Flask route'larını ve view'larını oluştur.
-- [ ] Veri girişi için HTML formlarını tasarla.
-- [ ] Girilen verileri veritabanına kaydetme mantığını yaz.
+- [x] Proje iskeletini oluştur (Flask app, dizin yapısı).
+- [x] Admin panelini oluştur (login, config sayfaları).
+- [x] Veritabanı modelini tasarla (Gayrimenkul, Kullanıcı, Rapor tabloları vb.).
+- [x] MSSQL veritabanı bağlantısını yapılandır.
+- [x] Temel Flask route'larını ve view'larını oluştur.
+- [x] Veri girişi için HTML formlarını tasarla.
+- [x] Girilen verileri veritabanına kaydetme mantığını yaz.
 - [ ] Analiz ve raporlama algoritmasını geliştir.
 - [ ] Raporları kullanıcıya sunacak arayüzü oluştur.
 - [ ] Gerekliyse kullanıcı kimlik doğrulama sistemi ekle (Login/Register).
